@@ -6,13 +6,13 @@ plugins {
     kotlin("plugin.noarg") version "1.4.10"
     kotlin("plugin.jpa") version "1.4.10"
     kotlin("plugin.spring") version "1.4.10"
-    id("org.springframework.boot") version "2.3.4.RELEASE"
+    id("org.springframework.boot") version "2.4.0-M3"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
 }
 
 group = "br.com.pagseguro"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_14
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
     compile.get().exclude(module = "spring-boot-starter-tomcat")
@@ -23,19 +23,21 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/milestone") }
+    maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
-val springfoxVersion = "2.9.2"
 val mapStructVersion = "1.4.0.Beta1"
 val mysqlConnectorJavaVersion = "8.0.21"
+val springGraalvmNativeVersion = "0.8.2-SNAPSHOT"
 
 dependencies {
+    implementation("org.springframework:spring-context-indexer")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-undertow")
+    implementation("org.springframework.experimental:spring-graalvm-native:$springGraalvmNativeVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.springfox:springfox-swagger2:$springfoxVersion")
-    implementation("io.springfox:springfox-swagger-ui:$springfoxVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("mysql:mysql-connector-java:$mysqlConnectorJavaVersion")
@@ -66,6 +68,6 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "14"
+        jvmTarget = "11"
     }
 }
