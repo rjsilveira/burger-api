@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    container_name: burger_api.mysql
+    environment:
+      MYSQL_DATABASE: 'burger_api'
+      MYSQL_USER: 'burger_api_user'
+      MYSQL_PASSWORD: '1234'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+  flyway:
+    image: boxfuse/flyway
+    command: -url=jdbc:mysql://mysql -schemas=burger_api -user=root -password=root -connectRetries=60 migrate
+    volumes:
+      - ./src/main/resources/db/migration:/flyway/sql
+    depends_on:
+      - mysql
