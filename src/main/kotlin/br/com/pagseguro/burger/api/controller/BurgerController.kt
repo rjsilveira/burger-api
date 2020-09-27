@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController
 class BurgerController(private val service: BurgerService) {
 
     @GetMapping
-    fun retrieve(filter: BurgerDTO, @PageableDefault pageable: Pageable) = this.service.retrieve(filter, pageable)
+    fun retrieve(filter: BurgerDTO) = this.service.retrieve(filter)
 
     @PostMapping
     fun create(@RequestBody burger: BurgerDTO) = this.service.create(burger)

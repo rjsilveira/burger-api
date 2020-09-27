@@ -1,6 +1,6 @@
 package br.com.pagseguro.burger.api.repository
 
 import br.com.pagseguro.burger.api.entity.BurgerEntity
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-interface BurgerRepository : JpaRepository<BurgerEntity, Long>
+interface BurgerRepository : ReactiveCrudRepository<BurgerEntity, Long>

@@ -3,6 +3,7 @@ services:
   mysql:
     image: mysql
     container_name: burger_api.mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: 'burger_api'
       MYSQL_USER: 'burger_api_user'

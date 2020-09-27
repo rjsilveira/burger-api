@@ -1,26 +1,20 @@
 package br.com.pagseguro.burger.api.dto
 
-import br.com.pagseguro.burger.api.enums.BreadTypeEnum
-import br.com.pagseguro.burger.api.enums.CheeseTypeEnum
-import br.com.pagseguro.burger.api.enums.SaladTypeEnum
-import br.com.pagseguro.burger.api.enums.SauceTypeEnum
-import br.com.pagseguro.burger.api.enums.SizeEnum
-
 data class BurgerDTO(
 
     var id: Long?,
 
     var quantity: Int?,
 
-    var bread: BreadTypeEnum?,
+    var bread: String?,
 
-    var cheese: CheeseTypeEnum?,
+    var cheese: String?,
 
-    var salad: SaladTypeEnum?,
+    var salad: String?,
 
-    var sauce: SauceTypeEnum?,
+    var sauce: String?,
 
-    var double: Boolean?,
+    var isdouble: Boolean?,
 
-    var size: SizeEnum?
+    var size: String?
 )
