@@ -12,7 +12,7 @@ rm -rf target
 mkdir -p target/native-image
 
 echo "Packaging $ARTIFACT with Gradle"
-./gradlew build -x test > target/native-image/output.txt
+./gradlew clean build -x test > target/native-image/output.txt
 
 JAR="$ARTIFACT-$VERSION.jar"
 rm -f $ARTIFACT
